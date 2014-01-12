@@ -1,6 +1,6 @@
 # AjGenesisNode Sinatra
 
-AjGenesisNode Sinatra tasks and templates, to generate web sites using Sinatra. WIP.
+AjGenesisNode Sinatra tasks and templates, to generate web sites based on Sinatra. WIP.
 
 ## Setup
 
