@@ -1,0 +1,17 @@
+{ "name": "ajgenesisnode-sinatra"
+, "description": "AjGenesis for Node, Sinatra tasks and templates"
+, "keywords": [ "codegeneration", "nodejs", "ajgenesis", "sinatra" ]
+, "version": "0.0.1"
+, "author": "Angel 'Java' Lopez <webmaster@ajlopez.com> (http://www.ajlopez.com)"
+, "repository": { "type": "git", "url": "git://github.com/ajlopez/AjGenesisNode-Sinatra.git" }
+, "main": "./index.js"
+, "engines": { "node": ">= 0.6.0 && < 0.11.0" }
+, "scripts": {
+    "test": "simpleunit ./test"
+  }
+, "dependencies": {
+  }
+, "devDependencies": {
+    "simpleunit": "0.0.2"
+  }
+}
