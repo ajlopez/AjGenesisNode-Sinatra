@@ -6,5 +6,5 @@ class ${entity.descriptor}
     property :id, Serial
 <# entity.properties.forEach(function (property) { #>
     property :${property.name}, String
-<# }); #>    
+<# }); #>
 end
