@@ -36,10 +36,12 @@ exports['generate controllers'] = function (test) {
         test.ok(fs.existsSync(path.join('build', 'views', 'customerlist.erb')));
         test.ok(fs.existsSync(path.join('build', 'views', 'customernew.erb')));
         test.ok(fs.existsSync(path.join('build', 'views', 'customerview.erb')));
+        test.ok(fs.existsSync(path.join('build', 'views', 'customeredit.erb')));
 
         test.ok(fs.existsSync(path.join('build', 'views', 'supplierlist.erb')));
         test.ok(fs.existsSync(path.join('build', 'views', 'suppliernew.erb')));
         test.ok(fs.existsSync(path.join('build', 'views', 'supplierview.erb')));
+        test.ok(fs.existsSync(path.join('build', 'views', 'supplieredit.erb')));
 
         test.ok(fs.existsSync(path.join('build', 'entities')));
         test.ok(fs.existsSync(path.join('build', 'entities', 'customer.rb')));

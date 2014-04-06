@@ -53,4 +53,25 @@ get '/${entity.name}/:id' do
   erb :${entity.name}view
 end
 
+get '/${entity.name}/:id/edit' do
+  @title = "Edit ${entity.descriptor}"
+  @${entity.name} = ${entity.descriptor}.get(params[:id])
+  erb :${entity.name}edit
+end
+
+post '/${entity.name}/:id/edit' do
+  ${entity.name} = ${entity.descriptor}.get(params[:id])
+<# entity.properties.forEach(function (property) { #>
+  ${entity.name}.${property.name} = params[:${property.name}]
+<# }); #>
+  ${entity.name}.save
+  redirect to("/${entity.name}/#{${entity.name}.id}")
+end
+
+get '/${entity.name}/:id/delete' do
+  ${entity.name} = ${entity.descriptor}.get(params[:id])
+  ${entity.name}.destroy
+  redirect to('/${entity.name}')
+end
+
 <# } #>
