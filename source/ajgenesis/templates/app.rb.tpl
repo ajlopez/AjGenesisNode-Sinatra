@@ -37,4 +37,13 @@ get '/${entity.name}/new' do
   @title = "New ${entity.descriptor}"
   erb :${entity.name}new
 end
+
+post '/${entity.name}/new' do
+  ${entity.name} = ${entity.descriptor}.new
+<# entity.properties.forEach(function (property) { #>
+  ${entity.name}.${property.name} = params[:${property.name}]
+<# }); #>
+  ${entity.name}.save
+  redirect to('/${entity.name}')
+end
 <# } #>
