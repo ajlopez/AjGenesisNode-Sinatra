@@ -23,6 +23,11 @@ get '/' do
   erb :index
 end
 
+get '/about' do
+  @title = "About this Project"
+  erb :about
+end
+
 <# for (var n in entities) { 
     var entity = entities[n];
 #>
