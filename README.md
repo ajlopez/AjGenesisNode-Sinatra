@@ -13,14 +13,59 @@ npm install ajgenesisnode-entity -g
 npm install ajgenesisnode-sinatra -g
 ```
 
-For install generate site dependencies, you need to install `bower`:
-```
-npm install bower -g
-```
-
 ## Quick start
 
-[TBD]
+In any directory, create an application
+```
+ajgenesis sinatra:create demo
+cd demo
+```
+
+The AjGenesis `sinatra` module is installed automatically from `ajgenesisnode-sinatra`, if it is not already installed.
+
+The new directory has subdirectories:
+
+- `models`: where the free model files reside.
+- `ajgenesis`: additional tasks and remplates for AjGenesis.
+- `site`: initial static files for a new web site.
+
+Add some entities and propeties:
+
+```
+ajgenesis entity:add customer
+ajgenesis entity:addproperty customer name
+ajgenesis entity:addproperty customer address
+ajgenesis entity:add supplier
+ajgenesis entity:addproperty supplier name
+ajgenesis entity:addproperty supplier address
+```
+
+The new .json files will be added to `models` director.
+
+Generate the web site:
+
+```
+ajgenesis generate
+```
+
+The web site is generated in a new directory `build`.
+
+Run the site
+```
+cd build
+ruby app.rb
+```
+
+The site uses sqlite3 and data-mapper. 
+
+TBD: explain dependencies
+
+Start the site
+```
+npm start
+```
+
+The site is available in your browser using `http://localhost:3000`.
 
 ## Development
 
@@ -32,6 +77,10 @@ npm link ajgenesis
 npm install
 npm test
 ```
+
+## Versions
+
+- 0.0.1 Published
 
 ## References
 
