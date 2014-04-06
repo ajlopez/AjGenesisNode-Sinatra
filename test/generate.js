@@ -17,7 +17,7 @@ exports['generate controllers'] = function (test) {
     test.ok(Array.isArray(model.entities));
     test.equal(model.entities.length, 2);
     
-    if (fs.existsSync('build') && !fs.existsSync(path.join('build', 'public', 'bower_components')))
+    if (fs.existsSync('build') && !fs.existsSync(path.join('build', 'development.db')))
         removeDirSync('build');
     
     generatetask(model, [], ajgenesis, function (err, result) {
@@ -35,8 +35,11 @@ exports['generate controllers'] = function (test) {
 
         test.ok(fs.existsSync(path.join('build', 'views', 'customerlist.erb')));
         test.ok(fs.existsSync(path.join('build', 'views', 'customernew.erb')));
+        test.ok(fs.existsSync(path.join('build', 'views', 'customerview.erb')));
+
         test.ok(fs.existsSync(path.join('build', 'views', 'supplierlist.erb')));
         test.ok(fs.existsSync(path.join('build', 'views', 'suppliernew.erb')));
+        test.ok(fs.existsSync(path.join('build', 'views', 'supplierview.erb')));
 
         test.ok(fs.existsSync(path.join('build', 'entities')));
         test.ok(fs.existsSync(path.join('build', 'entities', 'customer.rb')));

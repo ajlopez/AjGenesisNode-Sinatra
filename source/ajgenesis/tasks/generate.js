@@ -23,6 +23,7 @@ function generate(model, args, ajgenesis, cb) {
 
         ajgenesis.fileTransform(path.join(__dirname, '..', 'templates', 'views', 'entitylist.erb.tpl'), path.join('build', 'views', entity.name + 'list.erb'), model);
         ajgenesis.fileTransform(path.join(__dirname, '..', 'templates', 'views', 'entitynew.erb.tpl'), path.join('build', 'views', entity.name + 'new.erb'), model);
+        ajgenesis.fileTransform(path.join(__dirname, '..', 'templates', 'views', 'entityview.erb.tpl'), path.join('build', 'views', entity.name + 'view.erb'), model);
         ajgenesis.fileTransform(path.join(__dirname, '..', 'templates', 'entities', 'entity.rb.tpl'), path.join('build', 'entities', entity.name + '.rb'), model);
 
         delete model.entity;

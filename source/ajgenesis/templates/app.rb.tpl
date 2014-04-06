@@ -46,4 +46,11 @@ post '/${entity.name}/new' do
   ${entity.name}.save
   redirect to('/${entity.name}')
 end
+
+get '/${entity.name}/:id' do
+  @title = "${entity.descriptor}"
+  @${entity.name} = ${entity.descriptor}.get(params[:id])
+  erb :${entity.name}view
+end
+
 <# } #>
