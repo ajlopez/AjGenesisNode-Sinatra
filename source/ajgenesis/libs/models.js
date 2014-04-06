@@ -19,6 +19,9 @@ function completeEntity(entity) {
     if (entity.name && !entity.descriptor)
         entity.descriptor = utils.capitalize(entity.name);
         
+    if (entity.name && !entity.setname)
+        entity.setname = utils.pluralize(entity.name);
+        
     if (entity.descriptor && !entity.setdescriptor)
         entity.setdescriptor = utils.pluralize(entity.descriptor);
         

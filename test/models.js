@@ -35,8 +35,11 @@ exports['Complete model with entities and properties'] = function (test) {
     
     test.equal(model.descriptor, 'Project');
 
+    test.equal(model.entities[0].setname, 'customers');
     test.equal(model.entities[0].descriptor, 'Customer');
     test.equal(model.entities[0].setdescriptor, 'Customers');
+    
+    test.equal(model.entities[1].setname, 'suppliers');
     test.equal(model.entities[1].descriptor, 'Supplier');
     test.equal(model.entities[1].setdescriptor, 'Suppliers');
     

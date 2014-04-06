@@ -27,8 +27,6 @@ exports['generate controllers'] = function (test) {
         test.ok(fs.existsSync('build'));
         
         test.ok(fs.existsSync(path.join('build', 'app.rb')));
-        test.ok(fs.existsSync(path.join('build', 'bower.json')));
-        test.ok(fs.existsSync(path.join('build', '.bowerrc')));
 
         test.ok(fs.existsSync(path.join('build', 'public')));
         
@@ -36,8 +34,13 @@ exports['generate controllers'] = function (test) {
         test.ok(fs.existsSync(path.join('build', 'views', 'index.erb')));
 
         test.ok(fs.existsSync(path.join('build', 'views', 'customerlist.erb')));
-
+        test.ok(fs.existsSync(path.join('build', 'views', 'customernew.erb')));
         test.ok(fs.existsSync(path.join('build', 'views', 'supplierlist.erb')));
+        test.ok(fs.existsSync(path.join('build', 'views', 'suppliernew.erb')));
+
+        test.ok(fs.existsSync(path.join('build', 'entities')));
+        test.ok(fs.existsSync(path.join('build', 'entities', 'customer.rb')));
+        test.ok(fs.existsSync(path.join('build', 'entities', 'supplier.rb')));
         
         process.chdir(cwd);
         

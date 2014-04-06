@@ -1,22 +1,40 @@
 # myapp.rb
+
+require 'sinatra'
+require 'sinatra/reloader' if development?
+require 'data_mapper'
+
 require 'sinatra/base'
 
-class MyApp < Sinatra::Base
+<# for (var n in entities) { #>
+require './entities/${entities[n].name}'
+<# } #>
 
-    get '/' do
-      @title = "${project.descriptor}"
-      erb :index
-    end
+DataMapper.finalize
 
-    <# for (var n in entities) { 
-        var entity = entities[n];
-    #>
+DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
 
-    get '/${entity.name}' do
-      @title = "${entity.setdescriptor}"
-      erb :${entity.name}list
-    end
-    <# } #>
+<# for (var n in entities) { #>
+${entities[n].descriptor}.auto_upgrade!
+<# } #>
 
-    run! if app_file == $0
+get '/' do
+  @title = "${project.descriptor}"
+  erb :index
 end
+
+<# for (var n in entities) { 
+    var entity = entities[n];
+#>
+
+get '/${entity.name}' do
+  @title = "${entity.descriptor} List"
+  @${entity.setname} = ${entity.descriptor}.all
+  erb :${entity.name}list
+end
+
+get '/${entity.name}/new' do
+  @title = "New ${entity.descriptor}"
+  erb :${entity.name}new
+end
+<# } #>
