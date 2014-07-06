@@ -1,5 +1,6 @@
 
 var path = require('path');
+var generatetask = require('./source/ajgenesis/tasks/generate');
 
 module.exports = function (model, args, ajgenesis, cb) {
     var dirname = args[0];
@@ -13,7 +14,11 @@ module.exports = function (model, args, ajgenesis, cb) {
         }
     
         ajgenesis.fileTransform(path.join(__dirname, 'templates', 'project.json.tpl'), path.join(ajgenesis.getModelDirectory(dirname), 'project.json'), { name: dirname });
+        ajgenesis.fileTransform(path.join(__dirname, 'templates', 'package.json.tpl'), path.join(dirname, 'package.json'), { name: dirname });
+
+        var model = ajgenesis.loadModel(ajgenesis.getModelDirectory(dirname));
+        model.builddir = dirname;
         
-        cb(null, result);
+        generatetask(model, [], ajgenesis, cb);
     });
 }
