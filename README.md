@@ -6,10 +6,9 @@ AjGenesisNode Sinatra tasks and templates, to generate web sites based on Sinatr
 
 Install [Node.js](http://nodejs.org).
 
-Install globally latests version of AjGenesis for Node, Entity and Sinatra modules:
+Install globally latests version of AjGenesis for Node, and Sinatra modules:
 ```
 npm install ajgenesis -g
-npm install ajgenesisnode-entity -g
 npm install ajgenesisnode-sinatra -g
 ```
 
@@ -19,15 +18,17 @@ In any directory, create an application
 ```
 ajgenesis sinatra:create demo
 cd demo
+npm install
 ```
 
 The AjGenesis `sinatra` module is installed automatically from `ajgenesisnode-sinatra`, if it is not already installed.
 
-The new directory has subdirectories:
+There is a subdirectory `ajgenesis` containing:
 
-- `models`: where the free model files reside.
-- `ajgenesis`: additional tasks and remplates for AjGenesis.
-- `site`: initial static files for a new web site.
+- `ajgenesis/models`: where the free model files reside
+- `ajgenesis/tasks`: tasks to run
+- `ajgenesis/templates`: templates to be used
+- `ajgenesis/libs`: additional modules used by tasks
 
 Add some entities and propeties:
 
@@ -42,30 +43,22 @@ ajgenesis entity:addproperty supplier address
 
 The new .json files will be added to `models` director.
 
-Generate the web site:
+Generate the site:
 
 ```
 ajgenesis generate
 ```
 
-The web site is generated in a new directory `build`.
-
 Run the site
 ```
-cd build
 ruby app.rb
 ```
 
 The site uses sqlite3 and data-mapper. 
 
-TBD: explain dependencies
+TBD: explain dependencies, add gemfile
 
-Start the site
-```
-npm start
-```
-
-The site is available in your browser using `http://localhost:3000`.
+The site is available in your browser using `http://localhost:4567`.
 
 ## Development
 
@@ -81,6 +74,7 @@ npm test
 ## Versions
 
 - 0.0.1 Published
+- 0.0.2 Published
 
 ## References
 
