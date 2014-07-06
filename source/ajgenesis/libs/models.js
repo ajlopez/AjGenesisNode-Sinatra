@@ -18,6 +18,9 @@ function completeEntity(entity) {
         
     if (entity.name && !entity.title)
         entity.title = utils.capitalize(entity.name);
+
+    if (entity.name && !entity.classname)
+        entity.classname = utils.capitalize(entity.name);
         
     if (entity.name && !entity.setname)
         entity.setname = utils.pluralize(entity.name);
@@ -44,7 +47,10 @@ function completeModel(model) {
     if (model.project && model.project.name && !model.project.title)
         model.project.title = utils.capitalize(model.project.name);
         
-    if (model.entities)
+    if (!model.entities)
+        model.entities = [];
+        
+    if (model.entities && Array.isArray(model.entities))
         model.entities.forEach(function (entity) {
             completeEntity(entity);
         });

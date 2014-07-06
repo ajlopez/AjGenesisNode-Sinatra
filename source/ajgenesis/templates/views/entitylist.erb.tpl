@@ -1,7 +1,7 @@
 <h1><%= @title %></h1>
 
 <div class="row actions">
-<a class="btn btn-primary btn-sm" href="/${entity.name}/new">New ${entity.descriptor}</a>
+<a class="btn btn-primary btn-sm" href="/${entity.name}/new">New ${entity.title}</a>
 </div>
 
 <div class="row">
@@ -9,7 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>${entity.properties[0].descriptor}</th>
+                <th>${entity.properties[0].title}</th>
             </tr>
         </thead>
         <tbody>

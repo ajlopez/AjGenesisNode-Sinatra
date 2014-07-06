@@ -15,11 +15,11 @@ DataMapper.finalize
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
 
 <# for (var n in entities) { #>
-${entities[n].descriptor}.auto_upgrade!
+${entities[n].title}.auto_upgrade!
 <# } #>
 
 get '/' do
-  @title = "${project.descriptor}"
+  @title = "${project.title}"
   erb :index
 end
 
@@ -33,18 +33,18 @@ end
 #>
 
 get '/${entity.name}' do
-  @title = "${entity.descriptor} List"
-  @${entity.setname} = ${entity.descriptor}.all
+  @title = "${entity.title} List"
+  @${entity.setname} = ${entity.classname}.all
   erb :${entity.name}list
 end
 
 get '/${entity.name}/new' do
-  @title = "New ${entity.descriptor}"
+  @title = "New ${entity.title}"
   erb :${entity.name}new
 end
 
 post '/${entity.name}/new' do
-  ${entity.name} = ${entity.descriptor}.new
+  ${entity.name} = ${entity.classname}.new
 <# entity.properties.forEach(function (property) { #>
   ${entity.name}.${property.name} = params[:${property.name}]
 <# }); #>
@@ -53,19 +53,19 @@ post '/${entity.name}/new' do
 end
 
 get '/${entity.name}/:id' do
-  @title = "${entity.descriptor}"
-  @${entity.name} = ${entity.descriptor}.get(params[:id])
+  @title = "${entity.title}"
+  @${entity.name} = ${entity.classname}.get(params[:id])
   erb :${entity.name}view
 end
 
 get '/${entity.name}/:id/edit' do
-  @title = "Edit ${entity.descriptor}"
-  @${entity.name} = ${entity.descriptor}.get(params[:id])
+  @title = "Edit ${entity.title}"
+  @${entity.name} = ${entity.classname}.get(params[:id])
   erb :${entity.name}edit
 end
 
 post '/${entity.name}/:id/edit' do
-  ${entity.name} = ${entity.descriptor}.get(params[:id])
+  ${entity.name} = ${entity.classname}.get(params[:id])
 <# entity.properties.forEach(function (property) { #>
   ${entity.name}.${property.name} = params[:${property.name}]
 <# }); #>
@@ -74,7 +74,7 @@ post '/${entity.name}/:id/edit' do
 end
 
 get '/${entity.name}/:id/delete' do
-  ${entity.name} = ${entity.descriptor}.get(params[:id])
+  ${entity.name} = ${entity.classname}.get(params[:id])
   ${entity.name}.destroy
   redirect to('/${entity.name}')
 end

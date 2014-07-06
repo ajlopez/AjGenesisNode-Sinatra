@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>${project.descriptor} - <%= @title %></title>
+    <title>${project.title} - <%= @title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -23,14 +23,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">${project.descriptor}</a>
+          <a class="navbar-brand" href="/">${project.title}</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Entities <b class="caret"></b></a>
               <ul class="dropdown-menu"><# entities.forEach(function (entity) { #>
-                <li><a href="/${entity.name}">${entity.setdescriptor}</a></li><# }); #>              
+                <li><a href="/${entity.name}">${entity.settitle}</a></li><# }); #>              
               </ul>
             </li>
             <li><a href="/about">About</a></li>

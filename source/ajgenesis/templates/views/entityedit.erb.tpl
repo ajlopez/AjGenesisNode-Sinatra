@@ -1,8 +1,8 @@
 <h1><%= @title %></h1>
 
 <div class="row actions">
-<a class="btn btn-info btn-sm" href="/${entity.name}">${entity.descriptor} List</a>
-<a class="btn btn-info btn-sm" href="/${entity.name}/<%= @${entity.name}.id %>">View ${entity.descriptor}</a>
+<a class="btn btn-info btn-sm" href="/${entity.name}">${entity.title} List</a>
+<a class="btn btn-info btn-sm" href="/${entity.name}/<%= @${entity.name}.id %>">View ${entity.title}</a>
 </div>
 
 <div class='row'>
@@ -10,7 +10,7 @@
 
 <# entity.properties.forEach(function (property) { #>
     <div class="form-group">
-        <label for="${property.name}">${property.descriptor}</label>
+        <label for="${property.name}">${property.title}</label>
         <input type="text" class="form-control" name="${property.name}" id="${property.name}" value="<%= @${entity.name}.${property.name} %>">
     </div>
 <# }); #>

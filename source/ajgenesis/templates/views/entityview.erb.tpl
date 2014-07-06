@@ -1,9 +1,9 @@
 <h1><%= @title %></h1>
 
 <div class="row actions">
-<a class="btn btn-info btn-sm" href="/${entity.name}">${entity.descriptor} List</a>
-<a class="btn btn-primary btn-sm" href="/${entity.name}/<%= @${entity.name}.id %>/edit">Edit ${entity.descriptor}</a>
-<a class="btn btn-danger btn-sm" href="/${entity.name}/<%= @${entity.name}.id %>/delete">Delete ${entity.descriptor}</a>
+<a class="btn btn-info btn-sm" href="/${entity.name}">${entity.title} List</a>
+<a class="btn btn-primary btn-sm" href="/${entity.name}/<%= @${entity.name}.id %>/edit">Edit ${entity.title}</a>
+<a class="btn btn-danger btn-sm" href="/${entity.name}/<%= @${entity.name}.id %>/delete">Delete ${entity.title}</a>
 </div>
 
 <div class="row">
@@ -14,7 +14,7 @@
         </tr>
 <# entity.properties.forEach(function (property) { #>        
         <tr>
-            <td>${property.descriptor}</td>
+            <td>${property.title}</td>
             <td><%= @${entity.name}.${property.name} %></td>
         </tr>
 <# }); #>        
