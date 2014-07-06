@@ -1,21 +1,72 @@
 
 var generatetask = require('../source/ajgenesis/tasks/generate'),
+    createtask = require('../create'),
     path = require('path'),
     fs = require('fs'),
     ajgenesis = require('ajgenesis');
 
-exports['generate controllers'] = function (test) {
+exports['generate'] = function (test) {
     test.async();
     
     var cwd = process.cwd();
     
     process.chdir('test');
     
-    var model = ajgenesis.loadModel('models');
+    var model = ajgenesis.loadModel();
     
     test.ok(model.entities);
     test.ok(Array.isArray(model.entities));
     test.equal(model.entities.length, 2);
+    
+    if (fs.existsSync('build') && !fs.existsSync(path.join('build', 'development.db')))
+        removeDirSync('build');
+        
+    ajgenesis.createDirectory('build');
+    process.chdir('build');
+    
+    generatetask(model, [], ajgenesis, function (err, result) {
+        test.equal(err, null);
+        test.equal(result, null);
+        
+        test.ok(fs.existsSync('app.rb'));
+
+        test.ok(fs.existsSync('public'));
+        
+        test.ok(fs.existsSync('views'));
+        //test.ok(fs.existsSync(path.join('views', 'index.erb')));
+
+        test.ok(fs.existsSync(path.join('views', 'customerlist.erb')));
+        test.ok(fs.existsSync(path.join('views', 'customernew.erb')));
+        test.ok(fs.existsSync(path.join('views', 'customerview.erb')));
+        test.ok(fs.existsSync(path.join('views', 'customeredit.erb')));
+
+        test.ok(fs.existsSync(path.join('views', 'supplierlist.erb')));
+        test.ok(fs.existsSync(path.join('views', 'suppliernew.erb')));
+        test.ok(fs.existsSync(path.join('views', 'supplierview.erb')));
+        test.ok(fs.existsSync(path.join('views', 'supplieredit.erb')));
+
+        test.ok(fs.existsSync(path.join('entities')));
+        test.ok(fs.existsSync(path.join('entities', 'customer.rb')));
+        test.ok(fs.existsSync(path.join('entities', 'supplier.rb')));
+        
+        process.chdir(cwd);
+        
+        test.done();
+    });    
+}
+
+exports['generate in directory'] = function (test) {
+    test.async();
+    
+    var cwd = process.cwd();
+    
+    process.chdir('test');
+    
+    var model = ajgenesis.loadModel();
+    test.ok(model.entities);
+    test.ok(Array.isArray(model.entities));
+    test.equal(model.entities.length, 2);
+    model.builddir = 'build';
     
     if (fs.existsSync('build') && !fs.existsSync(path.join('build', 'development.db')))
         removeDirSync('build');
@@ -24,14 +75,12 @@ exports['generate controllers'] = function (test) {
         test.equal(err, null);
         test.equal(result, null);
         
-        test.ok(fs.existsSync('build'));
-        
         test.ok(fs.existsSync(path.join('build', 'app.rb')));
 
         test.ok(fs.existsSync(path.join('build', 'public')));
         
         test.ok(fs.existsSync(path.join('build', 'views')));
-        test.ok(fs.existsSync(path.join('build', 'views', 'index.erb')));
+        //test.ok(fs.existsSync(path.join('views', 'index.erb')));
 
         test.ok(fs.existsSync(path.join('build', 'views', 'customerlist.erb')));
         test.ok(fs.existsSync(path.join('build', 'views', 'customernew.erb')));

@@ -5,8 +5,8 @@ function completeProperty(property) {
     if (!property)
         return;
         
-    if (property.name && !property.descriptor)
-        property.descriptor = utils.capitalize(property.name);
+    if (property.name && !property.title)
+        property.title = utils.capitalize(property.name);
         
     if (!property.type)
         property.type = 'text';
@@ -16,14 +16,14 @@ function completeEntity(entity) {
     if (!entity)
         return;
         
-    if (entity.name && !entity.descriptor)
-        entity.descriptor = utils.capitalize(entity.name);
+    if (entity.name && !entity.title)
+        entity.title = utils.capitalize(entity.name);
         
     if (entity.name && !entity.setname)
         entity.setname = utils.pluralize(entity.name);
         
-    if (entity.descriptor && !entity.setdescriptor)
-        entity.setdescriptor = utils.pluralize(entity.descriptor);
+    if (entity.title && !entity.settitle)
+        entity.settitle = utils.pluralize(entity.title);
         
     if (entity.properties)
         entity.properties.forEach(function (property) {
@@ -35,11 +35,14 @@ function completeModel(model) {
     if (!model)
         return;
         
-    if (model.name && !model.descriptor)
-        model.descriptor = utils.capitalize(model.name);
+    if (model.name && !model.title)
+        model.title = utils.capitalize(model.name);
         
-    if (model.project && model.project.name && !model.project.descriptor)
-        model.project.descriptor = utils.capitalize(model.project.name);
+    if (!model.builddir)
+        model.builddir = '.';
+        
+    if (model.project && model.project.name && !model.project.title)
+        model.project.title = utils.capitalize(model.project.name);
         
     if (model.entities)
         model.entities.forEach(function (entity) {
