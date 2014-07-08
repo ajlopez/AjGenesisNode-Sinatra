@@ -32,9 +32,8 @@ exports['generate'] = function (test) {
 
         test.ok(fs.existsSync('public'));
         
-        test.ok(fs.existsSync('views'));
         //test.ok(fs.existsSync(path.join('views', 'index.erb')));
-
+        test.ok(fs.existsSync('views'));
         test.ok(fs.existsSync(path.join('views', 'customerlist.erb')));
         test.ok(fs.existsSync(path.join('views', 'customernew.erb')));
         test.ok(fs.existsSync(path.join('views', 'customerview.erb')));
@@ -48,6 +47,10 @@ exports['generate'] = function (test) {
         test.ok(fs.existsSync(path.join('entities')));
         test.ok(fs.existsSync(path.join('entities', 'customer.rb')));
         test.ok(fs.existsSync(path.join('entities', 'supplier.rb')));
+
+        test.ok(fs.existsSync('controllers'));
+        test.ok(fs.existsSync(path.join('controllers', 'customer.rb')));
+        test.ok(fs.existsSync(path.join('controllers', 'supplier.rb')));
         
         process.chdir(cwd);
         
