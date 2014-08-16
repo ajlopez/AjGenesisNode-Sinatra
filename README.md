@@ -80,6 +80,7 @@ npm test
 
 - [Using bootstrap with bower](http://stackoverflow.com/questions/14450408/using-bootstrap-with-bower)
 - [Bower](https://github.com/bower/bower)
+- [Modular vs. Classic Style](http://www.sinatrarb.com/intro.html#Modular%20vs.%20Classic%20Style)
 
 ## Contribution
 
