@@ -15,6 +15,18 @@
     </div>        
 <#
     }
+    else if (property.type == 'reference') { #>
+    <div class="form-group">
+        <label for="${property.name}">${property.title}</label>
+        <select class="form-control" name="${property.name}" id="${property.name}">
+            <option></option>
+<%  @${property.reference.setname}.each do |ref| %>
+            <option value="<%= ref.id %>"><%= ref.name %></option>
+<%  end %>
+        </select>
+    </div>
+<#
+    }
     else { #>
     <div class="form-group">
         <label for="${property.name}">${property.title}</label>

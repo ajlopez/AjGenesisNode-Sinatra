@@ -15,7 +15,7 @@ function completeProperty(property, entities) {
     if (!property.type)
         property.type = 'string';
         
-    if (property.reference) {
+    if (property.reference && typeof property.reference != 'object') {
         property.type = 'reference';
         property.reference = getEntityByName(entities, property.reference);
     }

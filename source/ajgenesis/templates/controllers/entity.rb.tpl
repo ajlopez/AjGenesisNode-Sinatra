@@ -7,14 +7,27 @@ end
 
 get '/${entity.name}/new' do
   @title = "New ${entity.title}"
+<# if (entity.references)
+    entity.references.forEach(function (ref) { #>
+  @${ref.setname} = ${ref.classname}.all      
+<#  }); #>
   erb :${entity.name}new
 end
 
 post '/${entity.name}/new' do
   ${entity.name} = ${entity.classname}.new
-<# entity.properties.forEach(function (property) { #>
+<# entity.properties.forEach(function (property) { 
+    if (property.type == 'reference') { #>
+    if params[:${property.name}] then
+        ${entity.name}.${property.name} = ${property.reference.classname}.get(params[:${property.name}])
+    end
+<#    
+    }
+    else {
+#>
   ${entity.name}.${property.name} = params[:${property.name}]
-<# }); #>
+<#  }
+  }); #>
   ${entity.name}.save
   redirect to('/${entity.name}')
 end
