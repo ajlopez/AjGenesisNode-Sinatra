@@ -12,12 +12,19 @@
             <td>Id</td>
             <td><%= @${entity.name}.id %></td>
         </tr>
-<# entity.properties.forEach(function (property) { #>        
+<# entity.properties.forEach(function (property) { 
+    if (property.type == 'reference') { #>
+        <tr>
+            <td>${property.title}</td>
+            <td><%= @${entity.name}.${property.name}.nil? ? '' : @${entity.name}.${property.name}.name %></td>
+        </tr>
+<#  } else { #>
         <tr>
             <td>${property.title}</td>
             <td><%= @${entity.name}.${property.name} %></td>
         </tr>
-<# }); #>        
+<#  }
+  }); #>        
     </table>
 </div>
 
