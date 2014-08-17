@@ -16,7 +16,7 @@ exports['generate'] = function (test) {
     
     test.ok(model.entities);
     test.ok(Array.isArray(model.entities));
-    test.equal(model.entities.length, 2);
+    test.equal(model.entities.length, 4);
     
     if (fs.existsSync('build') && !fs.existsSync(path.join('build', 'development.db')))
         removeDirSync('build');
@@ -44,13 +44,27 @@ exports['generate'] = function (test) {
         test.ok(fs.existsSync(path.join('views', 'supplierview.erb')));
         test.ok(fs.existsSync(path.join('views', 'supplieredit.erb')));
 
+        test.ok(fs.existsSync(path.join('views', 'departmentlist.erb')));
+        test.ok(fs.existsSync(path.join('views', 'departmentnew.erb')));
+        test.ok(fs.existsSync(path.join('views', 'departmentview.erb')));
+        test.ok(fs.existsSync(path.join('views', 'departmentedit.erb')));
+
+        test.ok(fs.existsSync(path.join('views', 'employeelist.erb')));
+        test.ok(fs.existsSync(path.join('views', 'employeenew.erb')));
+        test.ok(fs.existsSync(path.join('views', 'employeeview.erb')));
+        test.ok(fs.existsSync(path.join('views', 'employeeedit.erb')));
+
         test.ok(fs.existsSync(path.join('entities')));
         test.ok(fs.existsSync(path.join('entities', 'customer.rb')));
         test.ok(fs.existsSync(path.join('entities', 'supplier.rb')));
+        test.ok(fs.existsSync(path.join('entities', 'department.rb')));
+        test.ok(fs.existsSync(path.join('entities', 'employee.rb')));
 
         test.ok(fs.existsSync('controllers'));
         test.ok(fs.existsSync(path.join('controllers', 'customer.rb')));
         test.ok(fs.existsSync(path.join('controllers', 'supplier.rb')));
+        test.ok(fs.existsSync(path.join('controllers', 'department.rb')));
+        test.ok(fs.existsSync(path.join('controllers', 'employee.rb')));
         
         process.chdir(cwd);
         
@@ -68,7 +82,7 @@ exports['generate in directory'] = function (test) {
     var model = ajgenesis.loadModel();
     test.ok(model.entities);
     test.ok(Array.isArray(model.entities));
-    test.equal(model.entities.length, 2);
+    test.equal(model.entities.length, 4);
     model.builddir = 'build';
     
     if (fs.existsSync('build') && !fs.existsSync(path.join('build', 'development.db')))
@@ -98,6 +112,14 @@ exports['generate in directory'] = function (test) {
         test.ok(fs.existsSync(path.join('build', 'entities')));
         test.ok(fs.existsSync(path.join('build', 'entities', 'customer.rb')));
         test.ok(fs.existsSync(path.join('build', 'entities', 'supplier.rb')));
+        test.ok(fs.existsSync(path.join('build', 'entities', 'department.rb')));
+        test.ok(fs.existsSync(path.join('build', 'entities', 'employee.rb')));
+
+        test.ok(fs.existsSync(path.join('build', 'controllers')));
+        test.ok(fs.existsSync(path.join('build', 'controllers', 'customer.rb')));
+        test.ok(fs.existsSync(path.join('build', 'controllers', 'supplier.rb')));
+        test.ok(fs.existsSync(path.join('build', 'controllers', 'department.rb')));
+        test.ok(fs.existsSync(path.join('build', 'controllers', 'employee.rb')));
         
         process.chdir(cwd);
         
@@ -115,7 +137,7 @@ exports['create and generate'] = function (test) {
     var model = ajgenesis.loadModel();
     test.ok(model.entities);
     test.ok(Array.isArray(model.entities));
-    test.equal(model.entities.length, 2);
+    test.equal(model.entities.length, 4);
     
     if (fs.existsSync('build') && !fs.existsSync(path.join('build', 'development.db')))
         removeDirSync('build');
@@ -147,9 +169,27 @@ exports['create and generate'] = function (test) {
             test.ok(fs.existsSync(path.join('build', 'views', 'supplierview.erb')));
             test.ok(fs.existsSync(path.join('build', 'views', 'supplieredit.erb')));
 
+            test.ok(fs.existsSync(path.join('build', 'views', 'departmentlist.erb')));
+            test.ok(fs.existsSync(path.join('build', 'views', 'departmentnew.erb')));
+            test.ok(fs.existsSync(path.join('build', 'views', 'departmentview.erb')));
+            test.ok(fs.existsSync(path.join('build', 'views', 'departmentedit.erb')));
+
+            test.ok(fs.existsSync(path.join('build', 'views', 'employeelist.erb')));
+            test.ok(fs.existsSync(path.join('build', 'views', 'employeenew.erb')));
+            test.ok(fs.existsSync(path.join('build', 'views', 'employeeview.erb')));
+            test.ok(fs.existsSync(path.join('build', 'views', 'employeeedit.erb')));
+
             test.ok(fs.existsSync(path.join('build', 'entities')));
             test.ok(fs.existsSync(path.join('build', 'entities', 'customer.rb')));
             test.ok(fs.existsSync(path.join('build', 'entities', 'supplier.rb')));
+            test.ok(fs.existsSync(path.join('build', 'entities', 'department.rb')));
+            test.ok(fs.existsSync(path.join('build', 'entities', 'employee.rb')));
+
+            test.ok(fs.existsSync(path.join('build', 'controllers')));
+            test.ok(fs.existsSync(path.join('build', 'controllers', 'customer.rb')));
+            test.ok(fs.existsSync(path.join('build', 'controllers', 'supplier.rb')));
+            test.ok(fs.existsSync(path.join('build', 'controllers', 'department.rb')));
+            test.ok(fs.existsSync(path.join('build', 'controllers', 'employee.rb')));
             
             process.chdir(cwd);
             

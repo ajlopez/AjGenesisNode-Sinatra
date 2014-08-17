@@ -25,6 +25,19 @@
                 { "name": "address" },
                 { "name": "notes", "type": "text" }
             ]
+        },
+        {
+            "name": "department",
+            "properties": [
+                { "name": "name" }
+            ]
+        },
+        {
+            "name": "employee",
+            "properties": [
+                { "name": "name" },
+                { "name": "department", "reference": "department" }
+            ]
         }
     ]
 }
