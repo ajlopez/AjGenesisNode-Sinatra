@@ -8,12 +8,21 @@
 <div class='row'>
 <form method="post" role="form" class="form">
 
-<# entity.properties.forEach(function (property) { #>
+<# entity.properties.forEach(function (property) { 
+    if (property.type == 'text') { #>
+    <div class="form-group">
+        <label for="${property.name}">${property.title}</label>
+        <textarea class="form-control" name="${property.name}" id="${property.name}"><%= @${entity.name}.${property.name} %></textarea>
+    </div>        
+<#
+    }
+    else { #>
     <div class="form-group">
         <label for="${property.name}">${property.title}</label>
         <input type="text" class="form-control" name="${property.name}" id="${property.name}" value="<%= @${entity.name}.${property.name} %>">
     </div>
-<# }); #>
+<#  }    
+}); #>
     
     <input class="btn btn-primary" type="submit" value="Update" />
 </form>
