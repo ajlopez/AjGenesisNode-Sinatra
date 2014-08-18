@@ -109,6 +109,13 @@ exports['Complete model with reference'] = function (test) {
     test.equal(model.entities[0].references.length, 1);
     test.strictEqual(model.entities[0].references[0], model.entities[1]);
 
+    test.ok(model.entities[0].referenced);
+    test.equal(model.entities[0].referenced.length, 0);
+
     test.ok(model.entities[1].references);
     test.equal(model.entities[1].references.length, 0);
+
+    test.ok(model.entities[1].referenced);
+    test.equal(model.entities[1].referenced.length, 1);
+    test.strictEqual(model.entities[1].referenced[0], model.entities[0].properties[1]);
 };

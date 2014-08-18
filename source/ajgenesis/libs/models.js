@@ -39,13 +39,26 @@ function completeEntity(entity, entities) {
         
     if (!entity.references)
         entity.references = [];
+
+    if (!entity.referenced)
+        entity.referenced = [];
         
     if (entity.properties)
         entity.properties.forEach(function (property) {
+            property.entity = entity;
+            
             completeProperty(property, entities);
             
-            if (property.reference && property.reference.name && entity.references.indexOf(property.reference) < 0)
-                entity.references.push(property.reference);
+            if (property.reference && property.reference.name) {
+                if (entity.references.indexOf(property.reference) < 0)
+                    entity.references.push(property.reference);
+                    
+                if (!property.reference.referenced)
+                    property.reference.referenced = [];
+                    
+                if (property.reference.referenced.indexOf(property) < 0)
+                    property.reference.referenced.push(property);
+            }
         });
 }
 
