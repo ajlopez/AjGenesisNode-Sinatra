@@ -18,10 +18,9 @@ In any directory, create an application
 ```
 ajgenesis sinatra:create demo
 cd demo
-npm install
 ```
 
-The AjGenesis `sinatra` module is installed automatically from `ajgenesisnode-sinatra`, if it is not already installed.
+The created directory contains the seed of a Sinatra application.
 
 There is a subdirectory `ajgenesis` containing:
 
@@ -30,8 +29,14 @@ There is a subdirectory `ajgenesis` containing:
 - `ajgenesis/templates`: templates to be used
 - `ajgenesis/libs`: additional modules used by tasks
 
-Add some entities and propeties:
+Install additional ajgenesis modules:
+```
+ajgenesis install entity
+ajgenesis install model
+```
+The modules code and templates are installed under `ajgenesis/modules` folder.
 
+Let add some entities and propeties:
 ```
 ajgenesis entity:add customer
 ajgenesis entity:addproperty customer name
@@ -49,12 +54,19 @@ Generate the site:
 ajgenesis generate
 ```
 
+The site uses sqlite3 and data-mapper:
+```
+gem install sqlite3
+gem install dm-sqlite-adapter
+gem install data_mapper
+```
+Check [DataMapper Getting Starterd](http://datamapper.org/getting-started.html) for more information. For Windows, check
+[How do I install sqlite3 for Ruby on Windows?](http://stackoverflow.com/questions/15480381/how-do-i-install-sqlite3-for-ruby-on-windows).
+
 Run the site
 ```
 ruby app.rb
 ```
-
-The site uses sqlite3 and data-mapper. 
 
 TBD: explain dependencies, add gemfile
 

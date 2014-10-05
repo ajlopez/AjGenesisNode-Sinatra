@@ -17,7 +17,7 @@ exports['create application'] = function (test) {
         
         test.ok(fs.existsSync(dirname));
         
-        test.ok(fs.existsSync(path.join(dirname, 'package.json')));
+        // test.ok(fs.existsSync(path.join(dirname, 'package.json')));
 
         test.ok(fs.existsSync(path.join(dirname, 'ajgenesis')));
         test.ok(fs.existsSync(path.join(dirname, 'ajgenesis', 'templates')));
